@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[a4paper]{report}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,6 +30,8 @@ Jan Malisz
   \tableofcontents
   \newpage
 
+  \chapter{Wstęp}
+
   \section{Początki CSP}
   CSP czyli Communicating Sequential Processes po raz pierwszy zostało opisane w 1978 przez Sir Charles Antony Richard Hoare’a.
   Należy pamiętać, że CSP nie jest językiem programowania - jest notacją.
@@ -53,11 +55,24 @@ Jan Malisz
   Dodatkowo przez występujący niedeterminizm, niektóre instrukcje mogą powodować różne wyniki.
   Zatem dwa wykonania tego samego programu mogą zwrócić różne wyniki.
 
-  \section{Instrukcje}
+  \chapter{Składnia i semantyka}
 
-  \section{Założenie sekwencyjne}
+  \section{Instrukcje}
+  Instrukcje najogólniejsze pojęcie w notacji CSP.
+  Dzielą się one na proste (instrukacja pusta, przypisanie, instrukcja wejścia i wyjścia) i strukrutalne.
+  Tak jak było to już wspomniane, każda instrukcja w CSP wykonuje się poprawnie lub kończy się błędem.
+
+  \section{Instrukcja pusta}
+  Jest to, jak łatwo można się domyślić instrukcja która nie robi nic.
+  Zawsze jej rezultatem jest powodzenie.
+  Przydatna jest w instrukcjach alternatywy i iteracji.
+  \begin{equation}
+    \text{skip}
+  \end{equation}
 
   \section{Przypisanie}
+
+  \section{Założenie sekwencyjne}
 
   \section{Alternatywa}
   Alternatywa w CSP jest instrukcją strukturalną.
