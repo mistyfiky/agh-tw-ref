@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[polish]{babel}
+\usepackage{polski}
+\usepackage{indentfirst}
+\frenchspacing
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{Komunikacja w CSP}
+\author{
+Maciej Szklarczyk
+\and
+Jan Malisz
+\and
+Łukasz Nośko
+}
+\date{2019-05-18}
+
+\begin{document}
+
+  \maketitle
+  \thispagestyle{empty}
+  \newpage
+
+  \tableofcontents
+  \newpage
+
+  \section{Początki CSP}
+  CSP czyli Communicating Sequential Processes po raz pierwszy zostało opisane w 1978 przez Sir Charles Antony Richard Hoare’a.
+  Należy pamiętać, że CSP nie jest językiem programowania - jest notacją.
+  Nie posiada swojego kompilatora i środowiska do uruchamiania programów napisanych w CSP.
+  Jednak należy wspomnieć, że CSP jako notacja stało się pierwowzorem dla pełnoprawnych języków programowania takich jak na przykład Occama czy GoLang.
+
+  \section{CSP jako notacja synchroniczna}
+  CSP jest notacją synchroniczną co oznacza, że komunikacja zachodzi zawsze pomiędzy dwoma procesami z których rozróżniamy dwa typy.
+  Nadawcę i odbiorcę.
+  Nadawca musi znać identyfikator odbiorcy i jawnie określić do kogo jest skierowana wiadomość.
+  Odbiorca również musi być świadomy od kogo chce odebrać dane, aby mogło dojść do wymiany.
+  Taką wymianę informacji nazywamy synchroniczną, ponieważ oba procesy o sobie wiedzą i znają swoje identyfikatory.
+  Procesy jednak muszę oczekiwać na siebie, co prowadzi do tego, że odbiorca informacji będzie wstrzymany w stanie oczekującym dopóki nie otrzyma wiadomości.
+  Analogicznie nadawca będzie oczekiwał na odbiorcę.
+  Do komunikacji dojdzie kiedy obie strony przyjmą stan pozwalający na komunikację.
+
+  \section{Niedeterminizm}
+  Każdy projekt napisany w CSP jest zbiorem konkretnych deklaracji i instrukcji.
+  Każda z tych instrukcji może wykonać się poprawnie bądź spowodować błąd.
+  Jednak poprzez zdefiniowanie CSP jako notacji, a nie jako języka programowania wystąpienie błędu nie jest precyzyjnie zdefiniowane.
+  Dodatkowo przez występujący niedeterminizm, niektóre instrukcje mogą powodować różne wyniki.
+  Zatem dwa wykonania tego samego programu mogą zwrócić różne wyniki.
+
+  \section{Instrukcje}
+
+  \section{Założenie sekwencyjne}
+
+  \section{Przypisanie}
+
+  \section{Alternatywa}
+  Alternatywa w CSP jest instrukcją strukturalną.
+  W CSP jest niedeterministyczna.
+  Składa się z oddzielonych znakiem pionowej kreski '|' instrukcji.
+  Każda instrukcja, nazywana dozorowaną w najprostszej postaci składa się właśnie z dozoru, który jest wyrażeniem logicznym.
+  Alternatywę rozpoczynamy od otwarcia kwadratowego nawiasu '[' a kończymy zamknięciem ']'.
+  \begin{equation}
+    \begin{split}
+      &\lbrack x > 10; x < 20 \rightarrow y := 1\\
+      &|x \leq 10 \rightarrow y := 2\\
+      &|x \geq 20 \rightarrow y := 3 \rbrack
+    \end{split}
+  \end{equation}
+  Wykonanie pojedynczej alternatywy polega na wyliczeniu wartości logicznej dozorów i w przypadku ich poprawności wykonanie instrukcji.
+  W przypadku kiedy kilka dozorów jest poprawnych zostaje wykonana losowa instrukcja.
+  Jeśli w przypadku poprawności jednego dozoru nie chcemy wykonać nic, używamy instrukcji 'skip'.
+  Należy zadbać, żeby zawsze przynajmniej jeden dozor był prawdziwy.
+
+  \section{Dozory złożone}
+  CSP pozwala na umieszczenie w jednej instrukcji wielu dozorów.\\
+  TODO\\
+  Powyższy dozór nazywany jest dozorem słożonym, ponieważ jego wykonanie polega na kolejnym wyliczaniu poszczególnych warunków logicznych.
+  Jeśli dozór zwróci false, cała instrukcja jest zaniechana.
+  W przypadku powodzenia, następuje przejście do następnego wyrażenia logicznego.
+  Jeśli wszystkie wyrażenia są poprawne to cały dozór zostaje uznany za poprawny.
+
+  \section{Tablice dozorów}
+
+  \section{Instrukcja pusta}
+
+  \section{Iteracja}
+
+  \section{Złożenia równoległe}
+
+  \section{Tablice procesów}
+
+\end{document}
