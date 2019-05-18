@@ -60,7 +60,7 @@ Jan Malisz
 
   \section{Instrukcje}
   Instrukcje najogólniejsze pojęcie w notacji CSP .
-  Dzielą się one na deklaracje, instrukcje proste (instrukacja pusta, przypisanie, instrukcja wejścia i wyjścia) i strukrutalne.
+  Dzielą się one na deklaracje, instrukcje proste (instrukcja pusta, przypisanie, instrukcja wejścia i wyjścia) i strukturalne.
   Tak jak było to już wspomniane, każda instrukcja w CSP wykonuje się poprawnie lub kończy się błędem.
 
   \section{Instrukcja pusta}
@@ -82,8 +82,8 @@ Jan Malisz
   \end{equation}
 
   \section{Przypisanie}
-  W jej wyniku zmiannej docelowej po lewej stronie ustawiana jest wartość zwracana przez wyrażenie po prawej.
-  Na ~\ref{eq:przypisanie} do zmiannej x przypisywana jest wartość 1.
+  W jej wyniku zmiennej docelowej po lewej stronie ustawiana jest wartość zwracana przez wyrażenie po prawej.
+  Na ~\ref{eq:przypisanie} do zmiennej x przypisywana jest wartość 1.
   \begin{equation}
     \label{eq:przypisanie}
     x := 1
@@ -91,9 +91,9 @@ Jan Malisz
 
   \section{Założenie sekwencyjne}
   Jest to kilka deklaracji lub instrukcji połączonych ze sobą za pomocą znaku średnika ';'.
-  Wykonanie kolejnych elementów złożenia nasępuje kolejno po sobie, gdy tylko poprzednie zakończy swoje działania z powodzeniem.
+  Wykonanie kolejnych elementów złożenia następuje kolejno po sobie, gdy tylko poprzednie zakończy swoje działania z powodzeniem.
   W przypadku wystąpienia w złożeniu deklaracji, jej widoczność będzie sięgała do końca tego złożenia.
-  W przykładzie ~\ref{eq:zlozenie} zaprezentowane jest złożenie które wykonuje podmianę zmiannych dzięki zmiennej tymczasowej.
+  W przykładzie ~\ref{eq:zlozenie} zaprezentowane jest złożenie które wykonuje podmianę zmiennych dzięki zmiennej tymczasowej.
   \begin{equation}
     \label{eq:zlozenie}
     \begin{split}
@@ -113,7 +113,7 @@ Jan Malisz
   Wykonanie pojedynczej alternatywy polega na wyliczeniu wartości logicznej dozorów i w przypadku ich poprawności wykonanie instrukcji.
   W przypadku kiedy kilka dozorów jest poprawnych zostaje wykonana losowa instrukcja.
   Jeśli w przypadku poprawności jednego dozoru nie chcemy wykonać nic, używamy instrukcji 'skip'.
-  Należy zadbać, żeby zawsze przynajmniej jeden dozor był prawdziwy.
+  Należy zadbać, żeby zawsze przynajmniej jeden dozór był prawdziwy.
   Przykład ~\ref{eq:alternatywa} prezentuje zastosowanie instrukcji pustej w alternatywie.
   \begin{equation}
     \label{eq:alternatywa}
@@ -125,7 +125,7 @@ Jan Malisz
 
   \section{Dozory złożone}
   CSP pozwala na umieszczenie w jednej instrukcji wielu dozorów.
-  Dozór na przykadzie ~\ref{eq:dozor} nazywany jest dozorem złożonym, ponieważ jego wykonanie polega na kolejnym wyliczaniu poszczególnych warunków logicznych.
+  Dozór na przykładzie ~\ref{eq:dozor} nazywany jest dozorem złożonym, ponieważ jego wykonanie polega na kolejnym wyliczaniu poszczególnych warunków logicznych.
   Jeśli dozór zwróci false, cała instrukcja jest zaniechana.
   W przypadku powodzenia, następuje przejście do następnego wyrażenia logicznego.
   Jeśli wszystkie wyrażenia są poprawne to cały dozór zostaje uznany za poprawny.
