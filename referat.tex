@@ -35,7 +35,7 @@ Jan Malisz
   \section{Początki CSP}
   CSP czyli Communicating Sequential Processes po raz pierwszy zostało opisane w 1978 przez Sir Charles Antony Richard Hoare’a.
   Należy pamiętać, że CSP nie jest językiem programowania - jest notacją.
-  Nie posiada swojego kompilatora i środowiska do uruchamiania programów napisanych w CSP.
+  Nie posiada swojego kompilatora i środowiska do uruchamiania programów napisanych w CSP .
   Jednak należy wspomnieć, że CSP jako notacja stało się pierwowzorem dla pełnoprawnych języków programowania takich jak na przykład Occama czy GoLang.
 
   \section{CSP jako notacja synchroniczna}
@@ -58,21 +58,50 @@ Jan Malisz
   \chapter{Składnia i semantyka}
 
   \section{Instrukcje}
-  Instrukcje najogólniejsze pojęcie w notacji CSP.
-  Dzielą się one na proste (instrukacja pusta, przypisanie, instrukcja wejścia i wyjścia) i strukrutalne.
+  Instrukcje najogólniejsze pojęcie w notacji CSP .
+  Dzielą się one na deklaracje, instrukcje proste (instrukacja pusta, przypisanie, instrukcja wejścia i wyjścia) i strukrutalne.
   Tak jak było to już wspomniane, każda instrukcja w CSP wykonuje się poprawnie lub kończy się błędem.
 
   \section{Instrukcja pusta}
   Jest to, jak łatwo można się domyślić instrukcja która nie robi nic.
   Zawsze jej rezultatem jest powodzenie.
   Przydatna jest w instrukcjach alternatywy i iteracji.
+  Zapisywana jest w sposób zaprezentowany na ~\ref{eq:pusta}.
   \begin{equation}
+    \label{eq:pusta}
     \text{skip}
   \end{equation}
 
+  \section{Deklaracja}
+  Oznacza stworzenie zmiennej przechowującej wartość o danym typie.
+  Na ~\ref{eq:deklaracja} deklarowana jest zmienna o nazwie x i wartości typu integer.
+  \begin{equation}
+    \label{eq:deklaracja}
+    x: integer
+  \end{equation}
+
   \section{Przypisanie}
+  W jej wyniku zmiannej docelowej po lewej stronie ustawiana jest wartość zwracana przez wyrażenie po prawej.
+  Na ~\ref{eq:przypisanie} do zmiannej x przypisywana jest wartość 1.
+  \begin{equation}
+    \label{eq:przypisanie}
+    x := 1
+  \end{equation}
 
   \section{Założenie sekwencyjne}
+  Jest to kilka deklaracji lub instrukcji połączonych ze sobą za pomocą znaku średnika ';'.
+  Wykonanie kolejnych elementów złożenia nasępuje kolejno po sobie, gdy tylko poprzednie zakończy swoje działania z powodzeniem.
+  W przypadku wystąpienia w złożeniu deklaracji, jej widoczność będzie sięgała do końca tego złożenia.
+  W przykładzie ~\ref{eq:zlozenie} zaprezentowane jest złożenie które wykonuje podmianę zmiannych dzięki zmiennej tymczasowej.
+  \begin{equation}
+    \label{eq:zlozenie}
+    \begin{split}
+      \lbrack & x, y: integer;\\
+      & x := 1; y := 2;\\
+      & \qquad \lbrack tmp: integer;\\
+      & \qquad pom := x; x := y; y := pom \rbrack \rbrack
+    \end{split}
+  \end{equation}
 
   \section{Alternatywa}
   Alternatywa w CSP jest instrukcją strukturalną.
@@ -80,25 +109,33 @@ Jan Malisz
   Składa się z oddzielonych znakiem pionowej kreski '|' instrukcji.
   Każda instrukcja, nazywana dozorowaną w najprostszej postaci składa się właśnie z dozoru, który jest wyrażeniem logicznym.
   Alternatywę rozpoczynamy od otwarcia kwadratowego nawiasu '[' a kończymy zamknięciem ']'.
-  \begin{equation}
-    \begin{split}
-      &\lbrack x > 10; x < 20 \rightarrow y := 1\\
-      &|x \leq 10 \rightarrow y := 2\\
-      &|x \geq 20 \rightarrow y := 3 \rbrack
-    \end{split}
-  \end{equation}
   Wykonanie pojedynczej alternatywy polega na wyliczeniu wartości logicznej dozorów i w przypadku ich poprawności wykonanie instrukcji.
   W przypadku kiedy kilka dozorów jest poprawnych zostaje wykonana losowa instrukcja.
   Jeśli w przypadku poprawności jednego dozoru nie chcemy wykonać nic, używamy instrukcji 'skip'.
   Należy zadbać, żeby zawsze przynajmniej jeden dozor był prawdziwy.
+  Przykład ~\ref{eq:alternatywa} prezentuje zastosowanie instrukcji pustej w alternatywie.
+  \begin{equation}
+    \label{eq:alternatywa}
+    \begin{split}
+      \lbrack & x < 0 -> y := -y \\
+      | & x \geq0 -> \text{skip} \rbrack
+    \end{split}
+  \end{equation}
 
   \section{Dozory złożone}
-  CSP pozwala na umieszczenie w jednej instrukcji wielu dozorów.\\
-  TODO\\
-  Powyższy dozór nazywany jest dozorem słożonym, ponieważ jego wykonanie polega na kolejnym wyliczaniu poszczególnych warunków logicznych.
+  CSP pozwala na umieszczenie w jednej instrukcji wielu dozorów.
+  Dozór na przykadzie ~\ref{eq:dozor} nazywany jest dozorem złożonym, ponieważ jego wykonanie polega na kolejnym wyliczaniu poszczególnych warunków logicznych.
   Jeśli dozór zwróci false, cała instrukcja jest zaniechana.
   W przypadku powodzenia, następuje przejście do następnego wyrażenia logicznego.
   Jeśli wszystkie wyrażenia są poprawne to cały dozór zostaje uznany za poprawny.
+  \begin{equation}
+    \label{eq:dozor}
+    \begin{split}
+      \lbrack & x > 10; x < 20 \rightarrow y := 1\\
+      | & x \leq 10 \rightarrow y := 2\\
+      | & x \geq 20 \rightarrow y := 3 \rbrack
+    \end{split}
+  \end{equation}
 
   \section{Tablice dozorów}
 
@@ -109,5 +146,9 @@ Jan Malisz
   \section{Złożenia równoległe}
 
   \section{Tablice procesów}
+
+  \begin{thebibliography}{9}
+    \bibitem{wazniak5} Programowanie współbieżne i rozproszone/PWR Wykład 5 - Studia Informatyczne http://wazniak.mimuw.edu.pl/index.php?title=Programowanie\_wsp\%C3\%B3\%C5\%82bie\%C5\%BCne\_i\_rozproszone/PWR\_Wyk\%C5\%82ad\_5\\
+  \end{thebibliography}
 
 \end{document}
