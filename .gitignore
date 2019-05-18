@@ -2,5 +2,6 @@
 *.dvi
 *.fdb_latexmk
 *.fls
-*.toc
 *.log
+*.out
+*.toc
